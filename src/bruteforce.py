@@ -1,4 +1,6 @@
+
 from itertools import combinations
+from progress.bar import Bar
 from time import time
 
 from utils.get_shares_cost import get_shares_cost
@@ -12,6 +14,8 @@ def find_best_shares(shares: list[str, float, float]):
     profit = 0
     price = 0
     best_shares = []
+
+    bar = Bar("Bruteforcing", max=len(shares))
 
     for i in range(len(shares)):
         share_combinations = combinations(shares, i + 1)
@@ -30,11 +34,13 @@ def find_best_shares(shares: list[str, float, float]):
             profit = shares_profit
             best_shares = combination
             price = shares_price
+        
+        bar.next()
     
     return (best_shares, price, profit)
 
 def main():
-    shares = read_csv("./data/test_shares.csv")
+    shares = read_csv("./data/shares_1.csv")
 
     start_time = time()
 
