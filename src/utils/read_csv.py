@@ -1,5 +1,8 @@
 from csv import reader
 
+from typings import Shares
+
+
 def isfloat(string: str):
     try:
         float(string)
@@ -7,11 +10,12 @@ def isfloat(string: str):
     except ValueError:
         return False
 
-def read_csv(filename: str):
+
+def read_csv(filename: str) -> Shares:
     try:
         with open(filename) as file:
             csv_reader = reader(file)
-            
+
             data = []
 
             for row in csv_reader:
