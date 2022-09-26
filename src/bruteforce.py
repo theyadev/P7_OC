@@ -21,7 +21,7 @@ def find_best_shares(shares: Shares):
     best_shares = []
 
     bar = Bar("Bruteforcing", max=len(shares))
-
+    
     for i in range(len(shares)):
         share_combinations = combinations(shares, i + 1)
 
@@ -46,7 +46,7 @@ def find_best_shares(shares: Shares):
 
 
 def main():
-    shares = read_csv("./data/shares_1.csv")
+    shares = read_csv("./data/test_shares.csv")
 
     start_time = time()
 
